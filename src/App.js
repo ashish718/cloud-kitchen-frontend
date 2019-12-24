@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router,Switch, Route} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./component/Navbar"
+import Order from "./component/Dish"
+import CreateDish from "./component/Add";
+import OrderStatus from "./component/orderSummary";
+import DoneSummary from "./component/Summary"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+
+    return(
+      <Router>
+        <div>
+          <Navbar/>
+            <Switch>
+              <Route path="/" exact component={Order}/>
+              <Route path="/addDish" component={CreateDish}/>
+              <Route path="/orderSummary" component={OrderStatus} />
+              <Route path="/summary" component={DoneSummary}/>
+            </Switch>
+          </div>
+      </Router>
+    )
+
 }
 
 export default App;
